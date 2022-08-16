@@ -31,7 +31,7 @@ def detalhes(request, contato_id):
 
 def busca(request):
     termo = request.GET.get('termo')
-    
+
     if termo is None or not termo:
         messages.add_message(request, messages.ERROR, 'Campo de busca não pode estar vazio!')
         return redirect('index')
