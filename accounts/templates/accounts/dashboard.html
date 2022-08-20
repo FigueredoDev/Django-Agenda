@@ -6,11 +6,27 @@
     {% include 'parciais/_messages.html' %}
     <br>
     <p>
-        Seu nome de usuário é {{ user }}
+        {% include 'parciais/_messages.html' %}
     </p>
-    <br><br><br>
-    <a href="{% url 'login' %}">
-        <button class="btn btn-danger">Logout</button>
-    </a>
+    <div class="container">
+        <form action="{% url 'dashboard' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table class="table">
+                {{ form }}
+                <tr>
+                    <td>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </td>
+                    <td>
+                        <a href="{% url 'login' %}">
+                            <button class="btn btn-danger">Logout</button>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
 
 {% endblock %}
