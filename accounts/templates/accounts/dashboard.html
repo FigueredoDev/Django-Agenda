@@ -2,31 +2,45 @@
 
 {% block titulo %}Dashboard de {{ user }} | {% endblock %}
 {% block conteudo %}
-    <h1 class="mt-3 mb-3"> Olá {{ user.first_name }} {{user.last_name }} </h1>
-    {% include 'parciais/_messages.html' %}
-    <br>
-    <p>
-        {% include 'parciais/_messages.html' %}
-    </p>
     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-auto">
+                <h1 class="mt-3 mb-3"> Olá {{ user.first_name }} {{user.last_name }} </h1>
+            </div>
+            <div class="col-md-auto"></div>
+            <div class="col-md-auto">
+            </div>
+        </div>
+    </div>
+{% include 'parciais/_messages.html' %}
+    <div class="container">
+    <div class="col-md-auto">
+        <h4 class="mt-3 mb-3">Cadastrar novos contatos</h4>
         <form action="{% url 'dashboard' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <table class="table">
                 {{ form }}
                 <tr>
                     <td>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <div class="row justify-content-md-start">
+                            <div class="col-1">
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </div>
+                        </div>
                     </td>
-                    <td>
-                        <a href="{% url 'login' %}">
-                            <button class="btn btn-danger">Logout</button>
-                        </a>
-                    </td>
+                    <td></td>
                 </tr>
             </table>
         </form>
+        <div class="row justify-content-md-start">
+            <div class="col-lg-2">
+                <a href="{% url 'logout' %}">
+                    <button class="btn btn-danger" name="logout">Logout</button>
+                </a>
+            </div>
+        </div>
     </div>
-
+    </div>
 
 
 {% endblock %}
