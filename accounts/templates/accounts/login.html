@@ -17,6 +17,8 @@
          </div>
       <button type="submit" class="btn btn-primary">Entrar</button>
     </form>
+    <br><br>
+    <a href="{% url 'register' %}">Clique aqui para se cadastrar</a>
     {% else %}
         <p>Você fez login com {{ user }},
             <a href="{% url 'logout' %}">Clique aqui para sair.</a></p>
