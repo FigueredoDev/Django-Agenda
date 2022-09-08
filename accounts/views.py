@@ -18,10 +18,10 @@ def login(request):
     if not user:
         messages.error(request, 'Usuário ou senha invalidos')
         return render(request, 'accounts/login.html')
-    else:
-        auth.login(request, user)
-        messages.success(request, 'Login feito com sucesso')
-        return redirect('dashboard')
+
+    auth.login(request, user)
+    messages.success(request, 'Login feito com sucesso')
+    return redirect('dashboard')
 
 
 def logout(request):
@@ -41,14 +41,14 @@ def register(request):
     repetir_senha = request.POST.get('repetir_senha')
 
     # Validar campos preenchidos
-    if not nome or not sobrenome or not email or not usuario or not senha or not repetir_senha:
+    if not nome or not sobrenome or not email or not usuario or not senha or not repetir_senha:  # noqa: E501
         messages.error(request, 'Nenhum campo pode estar vazio!')
         return render(request, 'accounts/register.html')
 
     # Validar email
     try:
         validate_email(email)
-    except:
+    except Exception:
         messages.error(request, 'Email inválido')
         return render(request, 'accounts/register.html')
 
@@ -74,8 +74,10 @@ def register(request):
 
     messages.success(request, 'Registro feito com Sucesso! Faça o Login')
 
-    user = User.objects.create_user(username=usuario, email=email, password=senha,
-                                    first_name=nome, last_name=sobrenome)
+    user = User.objects.create_user(
+        username=usuario, email=email, password=senha,
+        first_name=nome, last_name=sobrenome
+    )
     user.save()
     return redirect('login')
 
@@ -92,6 +94,9 @@ def dashboard(request):
         form = FormContato(request.POST)
         return render(request, 'accounts/dashboard.html', {'form': form})
 
-    messages.success(request, f'Contato {request.POST.get("nome")} salvo com sucesso!')
+    messages.success(
+        request,
+        f'Contato {request.POST.get("nome")} salvo com sucesso!'
+    )
     form.save()
     return redirect('dashboard')

@@ -16,21 +16,21 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Categoria',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),  # noqa: E501
                 ('nome', models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
             name='Contato',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),  # noqa: E501
                 ('nome', models.CharField(max_length=255)),
                 ('sobrenome', models.CharField(blank=True, max_length=255)),
                 ('telefone', models.CharField(max_length=255)),
                 ('email', models.CharField(blank=True, max_length=255)),
-                ('data_criado', models.DateTimeField(verbose_name=django.utils.timezone.now)),
+                ('data_criado', models.DateTimeField(verbose_name=django.utils.timezone.now)),  # noqa: E501
                 ('descricao', models.TextField(blank=True)),
-                ('categoria', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='contatos.categoria')),
+                ('categoria', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='contatos.categoria')),  # noqa: E501
             ],
         ),
     ]
