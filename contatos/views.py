@@ -33,7 +33,10 @@ def busca(request):
     termo = request.GET.get('termo')
 
     if termo is None or not termo:
-        messages.add_message(request, messages.ERROR, 'Campo de busca não pode estar vazio!')
+        messages.add_message(
+            request,
+            messages.ERROR, 'Campo de busca não pode estar vazio!'
+        )
         return redirect('index')
 
     campos = Concat('nome', Value(' '), 'sobrenome')
@@ -46,4 +49,3 @@ def busca(request):
     return render(request, 'contatos/busca.html', {
         'contatos': contatos
     })
-

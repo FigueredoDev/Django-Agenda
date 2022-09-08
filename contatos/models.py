@@ -11,7 +11,7 @@ class Categoria(models.Model):
 
 class Contato(models.Model):
     nome = models.CharField(max_length=255)
-    sobrenome = models.CharField(max_length=255, blank=True)  # blank = True - campo não obrigatorio (NULL)
+    sobrenome = models.CharField(max_length=255, blank=True)
     telefone = models.CharField(max_length=255)
     email = models.CharField(max_length=255, blank=True)
     data_criado = models.DateTimeField(default=timezone.now)
