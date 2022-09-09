@@ -1,4 +1,4 @@
-.PHONY: install run lint
+.PHONY: install run db lint
 
 install:
 	@pip install pipenv
