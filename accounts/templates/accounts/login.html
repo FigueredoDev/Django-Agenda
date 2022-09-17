@@ -18,6 +18,7 @@
       <button type="submit" class="btn btn-primary">Entrar</button>
     </form>
     {% else %}
+    <br>
         <p>Você fez login com {{ user }},
             <a href="{% url 'logout' %}">Clique aqui para sair.</a></p>
     {% endif %}
