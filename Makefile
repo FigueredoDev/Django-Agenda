@@ -1,11 +1,10 @@
-.PHONY: install run db lint
+.PHONY: install run db lint test
 
 install:
 	@pip install pipenv
 	@pipenv install --python 3.10
 
 run:
-	@python manage.py test
 	@python manage.py runserver
 
 db:
@@ -13,3 +12,6 @@ db:
 
 lint:
 	@flake8
+
+test:
+	@python manage.py test
