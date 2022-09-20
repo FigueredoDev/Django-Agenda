@@ -1,4 +1,4 @@
-.PHONY: install run db lint
+.PHONY: install run db lint test
 
 install:
 	@pip install pipenv
@@ -12,3 +12,6 @@ db:
 
 lint:
 	@flake8
+
+test:
+	@python manage.py test
