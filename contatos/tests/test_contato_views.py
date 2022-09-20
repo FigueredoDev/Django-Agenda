@@ -14,6 +14,10 @@ class TestContatosView(TestCase):
 
     def test_contatos_detalhes_view_function_is_correct(self):
         view_detalhes = resolve(reverse(
-            'contatos:detalhes', kwargs={'contato_id': 1})
-        )
+            'contatos:detalhes', kwargs={'contato_id': 1}))
         self.assertIs(view_detalhes.func, views.detalhes)
+
+    def test_contatos_detalhes_view_return_status_code_200_OK(self):
+        response = self.client.get(
+            reverse('contatos:detalhes', kwargs={'contato_id': 1}))
+        self.assertEqual(response.status_code, 404)

@@ -3,7 +3,7 @@ from django.test import TestCase
 
 
 class ContatoModelsTest(TestCase):
-    def setUp(self) -> None:
+    def setUp(self):
         self.contato = Contato(
             nome="Jhonata", sobrenome="Figueredo", telefone="12334")
         self.categoria = Categoria(nome="Amigos")
