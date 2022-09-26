@@ -27,6 +27,13 @@ To run linter
 make lint
 ```
 
+To run tests
+
+```
+make test
+```
+
+
 Todo:
 
-- Unit tests
+- ~Unit tests~
